@@ -1,0 +1,15 @@
+/* --- SECCIÓN FOOTER --- */
+.footer {
+    background-color: #5d7fa3;
+    padding-bottom: 2rem;
+}
+
+.input-group {
+    display: flex;
+}
+
+.input-group input {
+    background: var(--neon-green);
+    border: none;
+    padding: 5px;
+}

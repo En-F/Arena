@@ -1,37 +1,25 @@
 import React from 'react';
 import { Head, Link } from '@inertiajs/react';
-import '../Home/Home.css';
+import '@/css/home.css';
 import CartaNoticia from '@/components/CartaNoticia';
 import CartaActividad from '@/components/CartaActividad';
+import { IoIosLogIn } from 'react-icons/io';
+import { FiClipboard } from 'react-icons/fi';
+import { GrLanguage } from 'react-icons/gr';
+import { FiSun, FiMoon } from 'react-icons/fi';
+import MainLayouts from '@/Layouts/MainLayout';
 
 export default function Home() {
     return (
-        <div className="main-container">
-            <Head title="CentroFit - Inicio" />
+        <>
+            <Head title="Arena - Tu Centro Fitness" />
 
-            {/* NAVBAR */}
-            <nav className="navbar">
-                <div className="nav-content">
-                    <div className="logo">CENTROFIT</div>
-                    <div className="nav-links">
-                        <Link href="#">Cursos y tarifas</Link>
-                        <Link href="#">Actividades</Link>
-                        <Link href="#">Centro</Link>
-                        <Link href="#">Horario</Link>
-                    </div>
-                    <div className="nav-icons">
-                        <span className="icon">🛒</span>
-                        <span className="icon">👤</span>
-                    </div>
-                </div>
-            </nav>
-
-            {/* SECCIÓN CENTROS */}
+            {/* --- SECCIÓN CENTROS --- */}
             <section className="section-centros">
-                <h2 className="title-green">Descubre nuestros centros</h2>
+                <h2 className="title-black">Descubre nuestros centros</h2>
                 <div className="grid-centros">
                     <div className="img-card-circle">
-                        <Link href="#">
+                        <Link href={'#'}>
                             <img src="/images/centros/piscina_sanlucar.jpg" />
                         </Link>
                     </div>
@@ -48,9 +36,9 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* SECCIÓN NOTICIAS */}
+            {/* --- SECCIÓN NOTICIAS --- */}
             <section className="section-noticias">
-                <h2 className="title-green">Noticias</h2>
+                <h2 className="title-black">Noticias</h2>
                 <div className="noticia-container">
                     <button className="arrow">←</button>
                     <div className="news-grid">
@@ -71,11 +59,14 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* BANNER INSCRIPCIÓN */}
+            {/* --- SECCIÓN BANNER--- */}
             <section className="banner-cta">
                 <div className="banner-content">
                     <div className="banner-image">
-                        <img src="/images/trainers.jpg" alt="Entrenadores" />
+                        <img
+                            src="/images/entrenador/entrenador.jpg"
+                            alt="Entrenadores"
+                        />
                     </div>
                     <div className="banner-text-box">
                         <h3>Inscríbete y disfruta de nuestros servicios</h3>
@@ -83,59 +74,33 @@ export default function Home() {
                             ¿A qué esperas más? Empieza a disfrutar de
                             beneficios únicos desde el primer día.
                         </p>
-                        <button className="btn-inscripcion">INSCRIBETE</button>
+                        <button className="btn-inscripcion">
+                            ¡Inscríbete ya!
+                        </button>
                     </div>
                 </div>
             </section>
 
-            {/* SECCIÓN ACTIVIDADES */}
+            {/* --- SECCIÓN ACTIVIDADES --- */}
             <section className="section-actividades">
                 <h2 className="title-green">Actividades</h2>
                 <div className="activities-grid">
-                    <Link>
-                        <CartaActividad
-                            title="Baloncesto"
-                            img="/images/actividades/baloncesto.jpg"
-                        />
-                    </Link>
-                    <Link>
-                        <CartaActividad
-                            title="Natación"
-                            img="/images/actividades/natacion.jpg"
-                        />
-                    </Link>
-                    <Link>
-                        <CartaActividad
-                            title="Ciclismo"
-                            img="/images/actividades/ciclismo.jpg"
-                        />
-                    </Link>
+                    <CartaActividad
+                        title="Ciclismo"
+                        imagen="/images/actividades/ciclismo.jpg"
+                    />
+                    <CartaActividad
+                        title="Natación"
+                        imagen="/images/actividades/natacion.jpg"
+                    />
+                    <CartaActividad
+                        title="Baloncesto"
+                        imagen="/images/actividades/baloncesto.jpg"
+                    />
                 </div>
             </section>
-
-            {/* FOOTER */}
-            <footer className="footer">
-                <div className="footer-top-image"></div>
-                <div className="footer-content">
-                    <div className="footer-col">
-                        <p>Cualquier duda</p>
-                        <div className="input-group">
-                            <input type="text" placeholder="Email..." />
-                            <button>→</button>
-                        </div>
-                    </div>
-                    <div className="footer-links">
-                        <Link href="#">Centros y tarifas</Link>
-                        <Link href="#">Actividades</Link>
-                    </div>
-                    <div className="footer-logo">CENTROFIT</div>
-                    <div className="footer-socials">
-                        {/* Iconos simulados */}
-                        <span>📸</span> <span>🎵</span> <span>🐦</span>{' '}
-                        <span>📺</span>
-                    </div>
-                </div>
-            </footer>
-        </div>
+        </>
     );
 }
+
+Home.layout = (page) => <MainLayouts children={page} />;
