@@ -1,5 +1,5 @@
+import { Link } from '@inertiajs/react';
 import React from 'react';
-import { Head, Link } from '@inertiajs/react';
 import '../../css/footer.css';
 
 const Footer = () => {
