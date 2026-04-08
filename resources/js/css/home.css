@@ -20,83 +20,13 @@ main {
     flex-direction: column;
 }
 
-/* --- SECCIÓN NAVEGACIÓN --- */
-/* .navbar {
-    background-color: var(--nav-blue);
-    padding: 19px 32px;
-    color: black;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-}
-.nav-left {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.switch-label {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    color: white;
-}
-.toggle {
-    appearance: none;
-    width: 45px;
-    height: 24px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    position: relative;
-    cursor: pointer;
-    transition: background 0.3s;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.toggle::before {
-    content: '';
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    background: white;
-    border-radius: 50%;
-    top: 2px;
-    left: 2px;
-    transition: transform 0.3s;
-}
-
-.toggle:checked {
-    background: var(--soft-green);
-}
-
-.toggle:checked::before {
-    transform: translateX(21px);
-}
-
-.lang-text {
-    font-size: 0.8rem;
-    font-weight: bold;
-    opacity: 0.7;
-}
-
-.toggle:checked + .lang-text,
-.lang-text:first-child:not(:checked) {
-    opacity: 1;
-}
-
-.switch-label svg {
-    opacity: 0.8;
-    transition: color 0.3s;
-} */
-
-.title-green {
+.title-black {
     color: var(--neon-green);
     text-align: center;
     margin: 2rem 0;
     font-size: 2rem;
+    color: var(--text-principal);
+    font-family: 'Kanit';
 }
 
 /* --- SECCIÓN CENTROS --- */
@@ -315,21 +245,6 @@ main {
 
 .activity-card:hover .activity-title {
     color: var(--neon-green);
-}
-/* --- SECCIÓN FOOTER --- */
-.footer {
-    background-color: #5d7fa3;
-    padding-bottom: 2rem;
-}
-
-.input-group {
-    display: flex;
-}
-
-.input-group input {
-    background: var(--neon-green);
-    border: none;
-    padding: 5px;
 }
 
 /* --- SECCIÓN RESPONSIVE --- */

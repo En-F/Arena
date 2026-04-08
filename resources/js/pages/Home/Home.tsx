@@ -83,7 +83,7 @@ export default function Home() {
 
             {/* --- SECCIÓN ACTIVIDADES --- */}
             <section className="section-actividades">
-                <h2 className="title-green">Actividades</h2>
+                <h2 className="title-black">Actividades</h2>
                 <div className="activities-grid">
                     <CartaActividad
                         title="Ciclismo"

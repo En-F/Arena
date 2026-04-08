@@ -2,14 +2,16 @@ import { Form, Head } from '@inertiajs/react';
 import InputError from '@/components/input-error';
 import TextLink from '@/components/text-link';
 import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
 import { register } from '@/routes';
 import { store } from '@/routes/login';
 import { request } from '@/routes/password';
-import AuthLayout from '@/layouts/auth-layout';
+import '../../css/login.css';
+import gymImage from '../../../../public/images/centros/atletismo.jpg';
+import registroCandado from '../../../../public/images/otros/icono-olvidada.svg';
+import registroRegistrarse from '../../../../public/images/otros/icono-registrarse.svg';
 
 type Props = {
     status?: string;
@@ -23,98 +25,135 @@ export default function Login({
     canRegister,
 }: Props) {
     return (
-        <AuthLayout
-            title="Logeate con tu cuenta"
-            description="Ingrese su correo electrónico y contraseña a continuación para iniciar sesión"
-        >
+        <>
             <Head title="Log in" />
 
-            <Form
-                {...store.form()}
-                resetOnSuccess={['password']}
-                className="flex flex-col gap-6"
-            >
-                {({ processing, errors }) => (
-                    <>
-                        <div className="grid gap-6">
-                            <div className="grid gap-2">
-                                <Label htmlFor="email">Dirección email</Label>
-                                <Input
-                                    id="email"
-                                    type="email"
-                                    name="email"
-                                    required
-                                    autoFocus
-                                    tabIndex={1}
-                                    autoComplete="email"
-                                    placeholder="email@ejemplo.com"
-                                />
-                                <InputError message={errors.email} />
-                            </div>
+            <div className="login-page">
+                <div className="login-card">
+                    <div className="login-card__image-col">
+                        <img
+                            src={gymImage}
+                            alt=""
+                            className="login-card__image"
+                        />
+                    </div>
 
-                            <div className="grid gap-2">
-                                <div className="flex items-center">
-                                    <Label htmlFor="password">Contraseña</Label>
-                                    {canResetPassword && (
-                                        <TextLink
-                                            href={request()}
-                                            className="ml-auto text-sm"
-                                            tabIndex={5}
+                    <div className="login-card__form-col">
+                        <Form
+                            {...store.form()}
+                            resetOnSuccess={['password']}
+                            className="login-form"
+                        >
+                            {({ processing, errors }) => (
+                                <>
+                                    <div className="login-form__contenedor">
+                                        <div className="login-form__contenido">
+                                            <Label className="login-form__label__socio">
+                                                Acceso socios
+                                            </Label>
+                                            <Input
+                                                id="email"
+                                                type="email"
+                                                name="email"
+                                                required
+                                                autoFocus
+                                                tabIndex={1}
+                                                autoComplete="email"
+                                                placeholder="Correo electrónico"
+                                                className="login-form__input"
+                                            />
+                                            <InputError
+                                                message={errors.email}
+                                            />
+                                        </div>
+
+                                        <div className="login-form__contenido">
+                                            <Input
+                                                id="password"
+                                                type="password"
+                                                name="password"
+                                                required
+                                                tabIndex={2}
+                                                autoComplete="current-password"
+                                                placeholder="Contraseña"
+                                                className="login-form__input"
+                                            />
+                                            <InputError
+                                                message={errors.password}
+                                            />
+                                        </div>
+
+                                        <div className="login-form__remember">
+                                            <input
+                                                type="checkbox"
+                                                id="remember"
+                                                name="remember"
+                                                tabIndex={3}
+                                                className="checkbox-input"
+                                            />
+                                            <Label
+                                                htmlFor="remember"
+                                                className="checkbox-label"
+                                            >
+                                                <span className="checkbox-box"></span>
+                                                Recordar Contraseña
+                                            </Label>
+                                        </div>
+
+                                        <Button
+                                            type="submit"
+                                            className="login-form__submit-btn"
+                                            tabIndex={4}
+                                            disabled={processing}
                                         >
-                                            ¿Olvidaste tu contraseña?
-                                        </TextLink>
-                                    )}
-                                </div>
-                                <Input
-                                    id="password"
-                                    type="password"
-                                    name="password"
-                                    required
-                                    tabIndex={2}
-                                    autoComplete="current-password"
-                                    placeholder="Password"
-                                />
-                                <InputError message={errors.password} />
-                            </div>
+                                            {processing && <Spinner />}
+                                            Iniciar sesión
+                                        </Button>
+                                    </div>
 
-                            <div className="flex items-center space-x-3">
-                                <Checkbox
-                                    id="remember"
-                                    name="remember"
-                                    tabIndex={3}
-                                />
-                                <Label htmlFor="remember">Recordarme</Label>
-                            </div>
+                                    <div className="footer__barra_inferior"></div>
+                                    <div className="login-form__footer-links">
+                                        {canRegister && (
+                                            <TextLink
+                                                href="/register"
+                                                tabIndex={5}
+                                                className="login-form__footer-link"
+                                            >
+                                                <img
+                                                    src={registroRegistrarse}
+                                                    alt="Icono registro"
+                                                    className="login-form__footer-icon"
+                                                />
+                                                ¿Ya eres socio pero no estas
+                                                registrado?
+                                            </TextLink>
+                                        )}
 
-                            <Button
-                                type="submit"
-                                className="mt-4 w-full"
-                                tabIndex={4}
-                                disabled={processing}
-                                data-test="login-button"
-                            >
-                                {processing && <Spinner />}
-                                Log in
-                            </Button>
-                        </div>
+                                        {canResetPassword && (
+                                            <TextLink
+                                                href="/forgot-password"
+                                                tabIndex={6}
+                                                className="login-form__footer-link"
+                                            >
+                                                <img
+                                                    src={registroCandado}
+                                                    alt="Icono registro"
+                                                    className="login-form__footer-icon"
+                                                />
+                                                ¿Olvidaste tu contraseña?
+                                            </TextLink>
+                                        )}
+                                    </div>
+                                </>
+                            )}
+                        </Form>
 
-                        {canRegister && (
-                            <div className="text-muted-foreground text-center text-sm">
-                                ¿No tienes cuenta?{' '}
-                                <TextLink href={register()} tabIndex={5}>
-                                    Regístrate
-                                </TextLink>
-                            </div>
+                        {status && (
+                            <div className="login-form__status">{status}</div>
                         )}
-                    </>
-                )}
-            </Form>
-
-            {status && (
-                <div className="mb-4 text-center text-sm font-medium text-green-600">
-                    {status}
+                    </div>
                 </div>
-            )}
-        </AuthLayout>
+            </div>
+        </>
     );
 }
